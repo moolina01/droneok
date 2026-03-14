@@ -1,0 +1,19 @@
+<svg width="280" height="56" viewBox="0 0 280 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- DroneOK Logo D3 — Plus Jakarta Sans 800 — Light background -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&amp;display=swap');
+  </style>
+  
+  <text x="0" y="42" fill="#111827" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:44px;font-weight:800;letter-spacing:-1.5px">Drone</text>
+  
+  <g transform="translate(138, 4)">
+    <circle cx="22" cy="22" r="19" fill="none" stroke="#059669" stroke-width="3"/>
+    <line x1="7" y1="7" x2="0" y2="0" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="37" y1="7" x2="44" y2="0" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="7" y1="37" x2="0" y2="44" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="37" y1="37" x2="44" y2="44" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M13 22 L19 29 L32 15" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <text x="192" y="42" fill="#059669" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:44px;font-weight:800;letter-spacing:-1.5px">K</text>
+</svg>

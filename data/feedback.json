@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1773432956707",
+    "reaction": "bad",
+    "message": "no me gusto nada",
+    "email": "mhuryy22@gmail.com",
+    "createdAt": "2026-03-13T20:15:56.707Z",
+    "url": "http://localhost:3000/"
+  },
+  {
+    "id": "1773433534036",
+    "reaction": "bad",
+    "message": "asdas",
+    "email": null,
+    "createdAt": "2026-03-13T20:25:34.036Z",
+    "url": "http://localhost:3000/"
+  },
+  {
+    "id": "1773433726640",
+    "reaction": "bad",
+    "message": null,
+    "email": null,
+    "createdAt": "2026-03-13T20:28:46.640Z",
+    "url": "http://localhost:3000/"
+  }
+]
