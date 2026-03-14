@@ -1,15 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-
-function LogoMark() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-      <rect x="13" y="1" width="11" height="11" rx="2.5" transform="rotate(45 13 1)" fill="#0ED8B1"/>
-      <circle cx="13" cy="13" r="3" fill="#0B1121"/>
-    </svg>
-  );
-}
+import DroneOKIcon from "@/componets/ui/DroneOKIcon";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -22,7 +14,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-[#E2E8F0] bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2.5">
-          <LogoMark />
+          <DroneOKIcon size={28} color="#059669" spinDuration={2.5} />
           <span className="text-[15px] font-bold tracking-tight text-[#0B1121]">
             DroneOK<span className="text-[#0ED8B1]">.cl</span>
           </span>

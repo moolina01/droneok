@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import AnimateIn from "@/componets/ui/AnimateIn";
+import DroneOKIcon from "@/componets/ui/DroneOKIcon";
 
 type Stage = "idle" | "dragging" | "ready" | "analyzing" | "error";
 
