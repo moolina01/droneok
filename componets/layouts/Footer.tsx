@@ -1,13 +1,5 @@
 import Link from "next/link";
-
-function LogoMark() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 26 26" fill="none">
-      <rect x="13" y="1" width="11" height="11" rx="2.5" transform="rotate(45 13 1)" fill="#0ED8B1"/>
-      <circle cx="13" cy="13" r="3" fill="white" />
-    </svg>
-  );
-}
+import DroneOKIcon from "@/componets/ui/DroneOKIcon";
 
 export default function Footer() {
   return (
@@ -17,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
-              <LogoMark />
+              <DroneOKIcon size={24} color="#34D399" spinDuration={2.5} />
               <span className="text-[15px] font-semibold text-white">
                 DroneOK<span className="text-[#0ED8B1]">.cl</span>
               </span>
