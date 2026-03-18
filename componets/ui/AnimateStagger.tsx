@@ -1,14 +1,14 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 
-const container = (stagger: number) => ({
+const container = (stagger: number): Variants => ({
   hidden:  {},
   visible: { transition: { staggerChildren: stagger } },
 });
 
-const item = (duration: number) => ({
+const item = (duration: number): Variants => ({
   hidden:  { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration, ease: [0.22, 1, 0.36, 1] } },
 });
