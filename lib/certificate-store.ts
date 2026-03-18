@@ -1,17 +1,17 @@
 import type { StoredCertificate } from "@/types/certificate";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 // ── Public API ────────────────────────────────────────────────────────────────
 
 export async function saveCertificate(cert: StoredCertificate): Promise<void> {
-  const { error } = await supabase
+  const { error } = await getSupabase()
     .from("certificates")
     .upsert({ id: cert.id, data: cert }, { onConflict: "id" });
   if (error) throw new Error(`Supabase saveCertificate: ${error.message}`);
 }
 
 export async function getCertificate(id: string): Promise<StoredCertificate | null> {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("certificates")
     .select("data")
     .eq("id", id)
