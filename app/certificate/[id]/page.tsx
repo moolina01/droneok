@@ -4,7 +4,7 @@ import CertificatePage from "@/componets/certificate/CertificatePage";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const cert = getCertificate(id);
+  const cert = await getCertificate(id);
 
   if (!cert) notFound();
 

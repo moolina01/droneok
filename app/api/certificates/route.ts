@@ -197,7 +197,7 @@ export async function POST(req: Request) {
     const aiSummary = await generateAISummary(partial);
 
     const cert: StoredCertificate = { ...partial, aiSummary, report };
-    saveCertificate(cert);
+    await saveCertificate(cert);
 
     return NextResponse.json({ ok: true, id });
   } catch (e: unknown) {
