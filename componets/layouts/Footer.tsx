@@ -11,7 +11,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2.5">
               <DroneOKIcon size={24} color="#34D399" spinDuration={2.5} />
               <span className="text-[15px] font-semibold text-white">
-                DroneOK<span className="text-[#0ED8B1]">.cl</span>
+                DroneOK <span className="text-[#0ED8B1]">.cl</span>
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#8B93A7]">
