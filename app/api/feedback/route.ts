@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
-import path from "path";
 import nodemailer from "nodemailer";
 
-const FEEDBACK_FILE = path.join(process.cwd(), "data", "feedback.json");
+const FEEDBACK_FILE = "/tmp/feedback.json";
 
 const reactionLabel: Record<string, string> = {
   bad:  "😕 Malo",
@@ -70,14 +69,17 @@ export async function POST(req: NextRequest) {
       url: req.headers.get("referer") || null,
     };
 
-    // Save to file
-    await fs.mkdir(path.dirname(FEEDBACK_FILE), { recursive: true });
-    const all = await readAll();
-    all.push(entry);
-    await fs.writeFile(FEEDBACK_FILE, JSON.stringify(all, null, 2));
-
-    // Send email (non-blocking — don't fail the request if email fails)
+    // Send email first — independent of file persistence
     sendEmail(entry).catch((e) => console.error("email error", e));
+
+    // Save to /tmp (best-effort — ephemeral on Vercel, never blocks the response)
+    try {
+      const all = await readAll();
+      all.push(entry);
+      await fs.writeFile(FEEDBACK_FILE, JSON.stringify(all, null, 2));
+    } catch (e) {
+      console.error("feedback file write error", e);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (e) {
