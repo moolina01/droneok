@@ -141,9 +141,9 @@ export default function HeroUpload() {
   const txtCount = files.filter((f) => f.name.toLowerCase().endsWith(".txt")).length;
 
   return (
-    <section className="bg-[#0B1121]">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+    <section id="subir" className="bg-[#0B1121]">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 lg:py-24">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
 
           {/* ── Left: copy ── */}
           <AnimateIn variant="fadeLeft">
@@ -152,7 +152,7 @@ export default function HeroUpload() {
               El primer verificador de drones en Chile 🇨🇱
             </div>
 
-            <h1 className="mt-5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.6rem] lg:leading-[1.15]">
+            <h1 className="mt-5 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-[2.6rem] lg:leading-[1.15]">
               Vende tu dron con un certificado que{" "}
               <span className="text-[#0ED8B1]">genera confianza.</span>
             </h1>

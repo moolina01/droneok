@@ -20,8 +20,8 @@ const benefits = [
 export default function SellerSection() {
   return (
     <section className="bg-[#F0F4FF]">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           {/* Left: copy */}
           <AnimateIn variant="fadeLeft">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#0ED8B1]/30 bg-[#0ED8B1]/10 px-3 py-1 text-xs font-medium text-[#0AA889]">

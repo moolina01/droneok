@@ -22,5 +22,13 @@
     "email": null,
     "createdAt": "2026-03-13T20:28:46.640Z",
     "url": "http://localhost:3000/"
+  },
+  {
+    "id": "1773845799053",
+    "reaction": "good",
+    "message": "[CONTACTO] Nombre: asdas\nAsunto: Problema técnico\n\nasdasd",
+    "email": "asdasd@gmail.com",
+    "createdAt": "2026-03-18T14:56:39.053Z",
+    "url": "http://172.20.10.8:3000/contacto"
   }
 ]

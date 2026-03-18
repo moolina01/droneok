@@ -12,14 +12,14 @@ const steps = [
 export default function SpeedSection() {
   return (
     <section id="velocidad" className="bg-[#0B1121]">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           {/* Left: timeline */}
           <AnimateIn variant="fadeLeft">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#1e2d4a] bg-[#0f1a2e] px-3 py-1 text-xs font-medium text-[#0ED8B1]">
               Cómo funciona
             </div>
-            <h2 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="mt-4 text-xl font-bold tracking-tight text-white sm:text-2xl lg:text-3xl">
               Del registro de vuelo al certificado en menos de 30 segundos
             </h2>
             <p className="mt-3 text-sm text-[#8B93A7]">

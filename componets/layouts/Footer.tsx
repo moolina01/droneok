@@ -4,8 +4,8 @@ import DroneOKIcon from "@/componets/ui/DroneOKIcon";
 export default function Footer() {
   return (
     <footer className="bg-[#0B1121] text-[#8B93A7]">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className="grid gap-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="mt-5 flex items-center gap-2 text-xs text-[#8B93A7]">
               <span>🇨🇱 Hecho en Chile</span>
               <span>·</span>
-              <span>soporte@droneok.cl</span>
+              <span>hola@droneok.cl</span>
             </div>
           </div>
 

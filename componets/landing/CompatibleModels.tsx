@@ -20,7 +20,7 @@ const models = [
 export default function CompatibleModels() {
   return (
     <section id="compatibilidad" className="bg-[#F0F4FF]">
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
         <AnimateIn variant="fadeUp">
         <div className="mx-auto max-w-xl text-center">
           <div className="inline-block rounded-full border border-[#0ED8B1]/30 bg-[#0ED8B1]/10 px-3 py-1 text-xs font-medium text-[#0AA889]">
@@ -38,10 +38,10 @@ export default function CompatibleModels() {
         <AnimateStagger stagger={0.06} className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {models.map((m) => (
             <div key={m.name}
-              className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-white px-4 py-3">
-              <span className="text-sm font-medium text-[#0B1121]">DJI {m.name}</span>
+              className="flex items-center justify-between rounded-xl border border-[#E2E8F0] bg-white px-3 py-2.5 sm:px-4 sm:py-3">
+              <span className="truncate text-xs font-medium text-[#0B1121] sm:text-sm">DJI {m.name}</span>
               {m.tag && (
-                <span className={`ml-2 shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium ${
+                <span className={`ml-1.5 shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium sm:ml-2 sm:px-2 sm:text-[11px] ${
                   m.tag === "Pro"
                     ? "bg-[#0B1121]/10 text-[#0B1121]"
                     : "bg-[#0ED8B1]/10 text-[#0AA889]"

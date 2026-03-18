@@ -183,12 +183,91 @@ function wrapText(font: PDFFont, rawText: string, maxWidth: number, size: number
 
 // ─── PDF sections ─────────────────────────────────────────────────────────────
 
+/**
+ * Draw the DroneOK icon using pdf-lib primitives.
+ * bx, by = bottom-left corner of the icon in PDF coordinates (y-up).
+ * size   = icon width/height in points (SVG viewBox is 48×48).
+ */
+function drawLogoMark(ctx: Ctx, bx: number, by: number, size: number, color: RGB) {
+  const s  = size / 48;
+  // SVG (sx,sy) → PDF: x = bx + sx*s,  y = by + (48 - sy)*s
+  const px = (sx: number) => bx + sx * s;
+  const py = (sy: number) => by + (48 - sy) * s;
+
+  // Circle (hollow)
+  ctx.page.drawCircle({
+    x: px(24), y: py(24),
+    size: 17 * s,
+    borderColor: color,
+    borderWidth: 3 * s,
+    opacity: 0,           // transparent fill
+    borderOpacity: 1,
+  });
+
+  // 4 diagonal rotor lines
+  const lw = 2.5 * s;
+  const lines: [number, number, number, number][] = [
+    [10.5, 10.5,  4,  4],
+    [37.5, 10.5, 44,  4],
+    [10.5, 37.5,  4, 44],
+    [37.5, 37.5, 44, 44],
+  ];
+  for (const [x1, y1, x2, y2] of lines) {
+    ctx.page.drawLine({
+      start: { x: px(x1), y: py(y1) },
+      end:   { x: px(x2), y: py(y2) },
+      color, thickness: lw,
+    });
+  }
+
+  // Check mark: M16 24 → L21 30 → L33 17
+  ctx.page.drawLine({ start: { x: px(16), y: py(24) }, end: { x: px(21), y: py(30) }, color, thickness: lw });
+  ctx.page.drawLine({ start: { x: px(21), y: py(30) }, end: { x: px(33), y: py(17) }, color, thickness: lw });
+}
+
 function drawHeader(ctx: Ctx, M: number, H: number, certificateId: string, analyzedAt: string) {
-  rect(ctx, 0, H - 46, 595, 46, rgb(0.08, 0.08, 0.10));
-  text(ctx, "Diagnostico de Historial", M, H - 29, 15, true, rgb(1, 1, 1));
-  text(ctx, `Analizado: ${analyzedAt}   ID: ${certificateId}`, 595 - M - 170, H - 29, 8, false, rgb(0.65, 0.65, 0.70));
-  text(ctx, "Basado en registros de vuelo DJI. Para uso en compra y venta.",
-    M, H - 42, 7.5, false, rgb(0.60, 0.60, 0.65));
+  const headerH = 68;
+  const green   = rgb(0.204, 0.827, 0.600); // #34D399
+
+  // Dark background
+  rect(ctx, 0, H - headerH, 595, headerH, rgb(0.06, 0.07, 0.09));
+
+  // Green left accent bar
+  rect(ctx, 0, H - headerH, 4, headerH, green);
+
+  // Logo mark (24×24) vertically centered in header
+  const logoSize = 24;
+  const logoX    = M;
+  const logoY    = H - headerH + (headerH - logoSize) / 2;
+  drawLogoMark(ctx, logoX, logoY, logoSize, green);
+
+  // "DroneOK.cl" brand name
+  const brandX = logoX + logoSize + 8;
+  text(ctx, "DroneOK", brandX,     H - headerH / 2 + 4,  13, true,  rgb(1, 1, 1));
+  text(ctx, ".cl",     brandX + 52, H - headerH / 2 + 4,  13, true,  green);
+
+  // Thin vertical separator
+  ctx.page.drawLine({
+    start: { x: brandX + 80, y: H - 14 },
+    end:   { x: brandX + 80, y: H - headerH + 14 },
+    color: rgb(0.25, 0.28, 0.35),
+    thickness: 0.8,
+  });
+
+  // Document title
+  const titleX = brandX + 92;
+  text(ctx, "Diagnostico de Historial", titleX, H - headerH / 2 + 5, 11, true, rgb(0.95, 0.95, 0.97));
+  text(ctx, "Basado en registros de vuelo DJI",   titleX, H - headerH / 2 - 8, 7.5, false, rgb(0.55, 0.58, 0.65));
+
+  // Right: date + ID
+  const rx = 595 - M;
+  text(ctx, `Emitido: ${analyzedAt}`, rx - 120, H - headerH / 2 + 5,  8,   false, rgb(0.60, 0.63, 0.70));
+  text(ctx, `ID: ${certificateId}`,   rx - 120, H - headerH / 2 - 8,  8,   true,  green);
+
+  // Bottom certification strip
+  rect(ctx, 4, H - headerH, 591, 10, rgb(0.10, 0.11, 0.14));
+  text(ctx, "CERTIFICADO POR DRONEOK.CL  |  Documento generado automaticamente a partir de registros oficiales DJI",
+    M + logoSize + 8, H - headerH + 3, 6, false, rgb(0.40, 0.43, 0.50));
 }
 
 function drawDroneCard(ctx: Ctx, r: Report, M: number, top: number): number {
@@ -518,10 +597,9 @@ export async function POST(req: Request) {
     const ctx: Ctx = { page, f, fb };
 
     drawHeader(ctx, M, H, certId, analyzedAt);
-    let y = H - 58;
+    let y = H - 80; // 68px header + 12px gap
 
     y = drawDroneCard(ctx, report, M, y);
-    y = drawScoreBox(ctx, report, M, y);
     y = drawHallazgos(ctx, generateFindings(report), M, y);
     y = drawTechCards(ctx, report, M, y);
     y = drawConfidenceCard(ctx, report, M, y);

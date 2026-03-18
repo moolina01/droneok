@@ -27,7 +27,7 @@ export default function Navbar() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 md:flex">
-          <Link href="/" className="rounded-lg bg-[#0B1121] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1a2540]">
+          <Link href="/#subir" className="rounded-lg bg-[#0B1121] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#1a2540]">
             Generar certificado
           </Link>
         </div>
@@ -46,7 +46,7 @@ export default function Navbar() {
             {navLinks.map(([href, label]) => (
               <Link key={href} href={href} onClick={() => setOpen(false)} className="rounded-md px-3 py-2.5 text-sm text-[#4B5675] hover:bg-[#F0F4FF]">{label}</Link>
             ))}
-            <Link href="/" onClick={() => setOpen(false)} className="mt-2 rounded-lg bg-[#0B1121] px-3 py-2.5 text-center text-sm font-semibold text-white">
+            <Link href="/#subir" onClick={() => setOpen(false)} className="mt-2 rounded-lg bg-[#0B1121] px-3 py-2.5 text-center text-sm font-semibold text-white">
               Generar certificado
             </Link>
           </nav>

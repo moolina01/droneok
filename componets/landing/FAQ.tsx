@@ -30,7 +30,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
   return (
     <section className="bg-[#0B1121]">
-      <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-20">
         <AnimateIn variant="fadeUp">
         <div className="text-center">
           <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
